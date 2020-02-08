@@ -1,0 +1,2 @@
+python train.py --source_train_path ./wmt14/train.en --target_train_path ./wmt14/train.de  --source_val_path ./wmt14/eval.en --target_val_path ./wmt14/eval.de
+python3 train.py --batch_size 3 --source_train_path wmt14/train.en --target_train_path wmt14/train.de --source_val_path wmt14/eval.en --target_val_path wmt14/eval.de

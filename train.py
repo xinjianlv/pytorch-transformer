@@ -143,97 +143,27 @@ def run(model_dir, max_len, source_train_path, target_train_path,
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser(
-        description="Google's transformer implementation in PyTorch")
-    PARSER.add_argument(
-        "--batch_size",
-        type=int,
-        default=2,
-        help="Number of batch in single iteration")
-    PARSER.add_argument(
-        "--source_train_path",
-        default=None,
-        help="Path for source training data. Ex: data/train.en")
-    PARSER.add_argument(
-        "--target_train_path",
-        default=None,
-        help="Path for target training data. Ex: data/train.de")
-    PARSER.add_argument(
-        "--source_val_path",
-        default=None,
-        help="Path for source validation data. Ex: data/val.en")
-    PARSER.add_argument(
-        "--target_val_path",
-        default=None,
-        help="Path for target validation data. Ex: data/val.de")
-    PARSER.add_argument(
-        "--epochs", type=int, default=10000, help="Number of epochs")
-    PARSER.add_argument(
-        "--learning_rate", type=float, default=1e-4, help="Learning rate size")
-    PARSER.add_argument(
-        "--max_len",
-        type=int,
-        default=100,
-        help="Maximum allowed sentence length")
-    PARSER.add_argument(
-        "--enc_max_vocab",
-        type=int,
-        default=80000,
-        help="Maximum vocabs for encoder")
-    PARSER.add_argument(
-        "--dec_max_vocab",
-        type=int,
-        default=80000,
-        help="Maximum vocabs for decoder")
-    PARSER.add_argument(
-        "--encoder_units",
-        default="512,512,512,512,512,512",
-        help="Number of encoder units for every layers. Separable by commas")
-    PARSER.add_argument(
-        "--decoder_units",
-        default="512,512,512,512,512,512",
-        help="Number of decoder units for every layers. Separable by commas")
-    PARSER.add_argument(
-        "--encoder_emb_size",
-        type=int,
-        default=512,
-        help="Size of encoder's embedding")
-    PARSER.add_argument(
-        "--decoder_emb_size",
-        type=int,
-        default=512,
-        help="Size of decoder's embedding")
-    PARSER.add_argument(
-        "--val_interval",
-        type=int,
-        default=1000,
-        help="""Run evaluation for every N steps""")
-    PARSER.add_argument(
-        "--save_interval",
-        type=int,
-        default=10,
-        help="""Save model for every N steps""")
-    PARSER.add_argument(
-        "--compare_interval",
-        type=int,
-        default=10,
-        help=
-        """Compare current prediction with its true label for every N steps""")
-    PARSER.add_argument(
-        "--decay_step",
-        type=int,
-        default=500,
-        help="Learning rate will decay after N step")
-    PARSER.add_argument(
-        "--decay_percent",
-        type=float,
-        default=0.1,
-        help="Percent of decreased in learning rate decay")
-    PARSER.add_argument(
-        "--model_dir",
-        type=str,
-        default="./checkpoints",
-        help="Location to save the model")
+    PARSER = argparse.ArgumentParser( description="Google's transformer implementation in PyTorch")
+    PARSER.add_argument( "--batch_size", type=int, default=2, help="Number of batch in single iteration")
+    PARSER.add_argument( "--source_train_path", default=None, help="Path for source training data. Ex: data/train.en")
+    PARSER.add_argument( "--target_train_path", default=None, help="Path for target training data. Ex: data/train.de")
+    PARSER.add_argument( "--source_val_path", default=None, help="Path for source validation data. Ex: data/val.en")
+    PARSER.add_argument( "--target_val_path", default=None, help="Path for target validation data. Ex: data/val.de")
+    PARSER.add_argument( "--epochs", type=int, default=10000, help="Number of epochs")
+    PARSER.add_argument( "--learning_rate", type=float, default=1e-4, help="Learning rate size")
+    PARSER.add_argument( "--max_len", type=int, default=100, help="Maximum allowed sentence length")
+    PARSER.add_argument( "--enc_max_vocab", type=int, default=80000, help="Maximum vocabs for encoder")
+    PARSER.add_argument( "--dec_max_vocab", type=int, default=80000, help="Maximum vocabs for decoder")
+    PARSER.add_argument( "--encoder_units", default="512,512,512,512,512,512", help="Number of encoder units for every layers. Separable by commas")
+    PARSER.add_argument( "--decoder_units", default="512,512,512,512,512,512", help="Number of decoder units for every layers. Separable by commas")
+    PARSER.add_argument( "--encoder_emb_size", type=int, default=512, help="Size of encoder's embedding")
+    PARSER.add_argument( "--decoder_emb_size", type=int, default=512, help="Size of decoder's embedding")
+    PARSER.add_argument( "--val_interval", type=int, default=1000, help="""Run evaluation for every N steps""")
+    PARSER.add_argument( "--save_interval", type=int, default=10, help="""Save model for every N steps""")
+    PARSER.add_argument( "--compare_interval", type=int, default=10, help= """Compare current prediction with its true label for every N steps""")
+    PARSER.add_argument( "--decay_step", type=int, default=500, help="Learning rate will decay after N step")
+    PARSER.add_argument( "--decay_percent", type=float, default=0.1, help="Percent of decreased in learning rate decay")
+    PARSER.add_argument( "--model_dir", type=str, default="./checkpoints", help="Location to save the model")
     ARGS = PARSER.parse_args()
 
     ENCODER_UNITS = [int(unit) for unit in ARGS.encoder_units.split(",")]
